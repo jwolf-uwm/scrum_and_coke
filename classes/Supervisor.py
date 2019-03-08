@@ -4,8 +4,8 @@ from classes import Person
 
 
 class Supervisor(Person):
-    def __init__(self, name, email, username, password, phone):
-        super().__init__(name, email, username, password, phone)
+    def __init__(self, email, username, password):
+        super().__init__(email, username, password)
 
     def assign_instructor_course(self, instructor, course):
         """
