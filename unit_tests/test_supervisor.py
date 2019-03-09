@@ -16,7 +16,7 @@ class TestSupervisor(TestCase):
     course1 = Course("Intro to Computer Stuff", "CS101")
 
     def test_assign_instructor_course(self):
-        
+
 
     def test_assign_ta_course(self):
 
