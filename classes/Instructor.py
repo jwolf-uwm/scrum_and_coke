@@ -1,12 +1,12 @@
 # created by Jeff
 
-from classes import Person
+from classes.Person import Person
 
 
-class InstructorClass(Person):
+class Instructor(Person):
 
-    def __init__(self, email, username, password):
-        super().__init__(email, username, password)
+    def __init__(self, email, password):
+        super().__init__(email, password)
         self.courses = []
 
     def assign_ta_course(self, email, course_id, course_section):
@@ -25,4 +25,7 @@ class InstructorClass(Person):
         return
 
     def edit_contact_info(self):
+        return
+
+    def send_notification_ta(self, ta_email, content):
         return
