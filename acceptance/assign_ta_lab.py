@@ -13,6 +13,7 @@ self.TA1 = TA("TA1@uwm.edu", "TA1")
         self.assertEqual(self.ui.command("assign_ta_lab TA1@uwm.edu, 802"), "802 could not be assigned since "
                                                                             "it does not exist")
 
+
         # test number of arguments
         self.assertEqual(self.ui.command("assign_ta_lab TA@uwm.edu"), "Error: too few arguments")
         self.assertEqual(self.ui.command("assign_ta_lab"), "Error: too few arguments")
