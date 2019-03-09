@@ -71,25 +71,18 @@ class TestSupervisor(TestCase):
         self.assertNotEqual(self.ta3_course, "CS101")
         self.assertNotEqual(self.course1_tas[2], "ins3@uwm.edu")
 
-        self.assertRaises(self.sup.assign_instructor(self.ins1, self.course1[0]), TypeError)
+        self.assertRaises(self.sup.assign_ta_course(self.ins1, self.course1[0]), TypeError)
 
     def test_assign_ta_lab(self):
         # TA 1 is assigned CS101 - 801
         self.sup.assign_ta_lab(self.ta1, 801)
         self.assertEqual(self.ta1_sections[0], 801)
 
-        # TA 2 is assigned CS101
-        self.sup.assign_ta_course(self.ta2, self.course1[0])
+        # TA 2 is assigned CS101 - 802
+        self.sup.assign_ta_lab(self.ta2, 802)
         self.assertEqual(self.ta2_sections[0], "CS101")
 
         # Try to assign TA 1 another lab section
-        self.assertRaises(self.sup.assign_ta_course(self.ta1, self.course2[0]), OverflowError)
-        self.assertEqual(self.ta1_course, "CS202")
-        self.assertEqual(self.course2_tas[0], "ta1@uwm.edu")
+        self.assertRaises(self.sup.assign_ta_lab(self.ta1, self.course2[0]), OverflowError)
 
-        # Try to assign a third TA to CS101
-        self.sup.assign_ta_course(self.ta3, self.course1[0])
-        self.assertNotEqual(self.ta3_course, "CS101")
-        self.assertNotEqual(self.course1_tas[2], "ins3@uwm.edu")
-
-        self.assertRaises(self.sup.assign_instructor(self.ins1, self.course1[0]), TypeError)
+        self.assertRaises(self.sup.assign_ta_lab(self.ins1, self.course1[0]), TypeError)
