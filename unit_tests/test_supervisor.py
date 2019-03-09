@@ -82,8 +82,8 @@ class TestSupervisor(TestCase):
         self.sup.assign_ta_course(self.ta2, self.course1[0])
         self.assertEqual(self.ta2_sections[0], "CS101")
 
-        # assign TA 1 another lab section
-        self.sup.assign_ta_course(self.ta1, self.course2[0])
+        # Try to assign TA 1 another lab section
+        self.assertRaises(self.sup.assign_ta_course(self.ta1, self.course2[0]), OverflowError)
         self.assertEqual(self.ta1_course, "CS202")
         self.assertEqual(self.course2_tas[0], "ta1@uwm.edu")
 
