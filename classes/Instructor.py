@@ -5,8 +5,8 @@ from classes import Person
 
 class InstructorClass(Person):
 
-    def __init__(self, email, username, password):
-        super().__init__(email, username, password)
+    def __init__(self, email, password):
+        super().__init__(email, password)
         self.courses = []
 
     def assign_ta_course(self, email, course_id, course_section):

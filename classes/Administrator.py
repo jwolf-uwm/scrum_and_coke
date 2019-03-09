@@ -16,25 +16,24 @@ class Administrator(Person):
     must be able to send notification
     must be able to access information
     """
-    def __init__(self, username, password, email):
-        self.username = username
+    def __init__(self, email, password):
         self.password = password
         self.email = email
 
-    def createCourse(self, courseName):
+    def create_course(self, course_id, course_section):
         return
 
-    def createAccount(self, username, password, email):
+    def create_account(self, email, password):
         return
 
-    def editAccount(self, editInfo):
+    def edit_account(self, email):
         return
 
-    def deleteAccount(self, username):
+    def delete_account(self, email):
         return
 
-    def sendNotification(self, notification):
+    def send_notification(self, notification):
         return
 
-    def accessInfo(self):
+    def access_info(self):
         return
