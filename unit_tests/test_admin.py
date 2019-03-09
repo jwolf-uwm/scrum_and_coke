@@ -4,24 +4,32 @@ from classes.Administrator import Administrator
 from unittest import TestCase
 
 
-class TestAdmin(TestCase):
+class TestAdministrator(TestCase):
+    def setUp(self):
+        self.ad1 = Administrator("ad1@uwm.edu", "ad1pass")
 
-    def test_createCourse(self):
-        self.ad1 = Administrator("ad1@uwm.edu", "ad1pas")
-        self.ad2 = Administrator("ad22@uwm.edu", "ad2pass")
+    def test_create_course(self):
+        self.assertTrue(self.ad1.create_course("CS361", 3))
+        self.course1 = ("CS337", 1)
+        # course already exists
+        self.assertFalse(self.ad1.create_course("CS337", 2))
 
-        self.assertTrue(self, self.ad1.createAccount("people","pass","thatguy@uwm.edu"))
-        self.assertTrue(self, self.ad1.createAccount("people1", "pass2", "thatguy2@uwm.edu"))
-        self.assertFalse(self, self.ad1.createAccount("people","pass","thatguy@uwm.edu"))
+    def test_create_account(self):
+        self.assertTrue(self.ad1.create_account("DustyBottoms@uwm.edu", "better_password"))
+        self.ad2 = Administrator("ad2@uwm.edu", "ad2pass")
+        # taken email
+        self.assertFalse(self.ad1.create_account("ad2@uwm.edu", "new_pass"))
+        # taken password
+        self.assertFalse(self.ad1.create_account("George_Likes_Beef@uwm.edu", "better_password"))
 
-    def test_createAccount(self):
-        self.ad1 = Administrator("admin", "testpass", "blah@uwm.edu")
-        self.ad2 = Administrator("admin2", "testpass2", "blah2@uwm.edu")
+    def test_edit_account(self):
+        self.random_user = ("rando@uwm.edu", "im_random")
+        self.ad1.edit_account("random@uwm.edu", "password", "new_pass")
+        self.assertEqual(self.random_user[2], "new_pass")
 
-        self.assertTrue(self, self.ad1.createCourse("CS337"))
-        self.assertTrue(self, self.ad2.createCourse("CS315"))
-        self.assertFalse(self, self.ad1.createCourse("CS337"))
+    def test_delete_account(self):
 
-    def test_editAccount(self):
-        self.ad1 = Administrator("admin", "testpass", "blah@uwm.edu")
-        self.ad2 = Administrator("admin2", "testpass2", "blah2@uwm.edu")
+    def test_send_notification(self):
+        self.assertTrue(self.ad1.send_notification("I Like To Eat French Fries In The Rain"))
+
+    def test_access_info(self):

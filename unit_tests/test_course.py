@@ -3,6 +3,14 @@ from classes.Course import Course
 
 
 class TestCourse(TestCase):
+
+    def setup(self):
+        course1 = Course("CS251","401")
+        course2 = Course()
+        course3 = Course()
+
+    def test__init__(self):
+
     def test_set_course_id(self):
         self.fail()
 
