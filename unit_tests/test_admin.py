@@ -1,14 +1,14 @@
 # created by Matt
 
-from classes import Administrator
+from classes.Administrator import Administrator
 from unittest import TestCase
 
 
 class TestAdmin(TestCase):
 
     def test_createCourse(self):
-        self.ad1 = Administrator("admin", "testpass", "blah@uwm.edu")
-        self.ad2 = Administrator("admin2", "testpass2", "blah2@uwm.edu")
+        self.ad1 = Administrator("ad1@uwm.edu", "ad1pas")
+        self.ad2 = Administrator("ad22@uwm.edu", "ad2pass")
 
         self.assertTrue(self, self.ad1.createAccount("people","pass","thatguy@uwm.edu"))
         self.assertTrue(self, self.ad1.createAccount("people1", "pass2", "thatguy2@uwm.edu"))

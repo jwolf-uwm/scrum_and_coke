@@ -1,7 +1,7 @@
 # created by Grant
 
 from unittest import TestCase
-from classes import Person
+from classes.Person import Person
 
 
 class TestPerson(TestCase):
@@ -13,17 +13,20 @@ class TestPerson(TestCase):
         self.assertEquals(self.person1.name, "DEFAULT")
         self.assertEquals(self.person1.phone_number, "DEFAULT")
 
+    def test_change_password(self):
+        self.fail()
+
+    def test_change_email(self):
+        self.fail()
+
+    def test_change_phone(self):
+        self.fail()
+
+    def test_get_contact_info(self):
+        self.fail()
+
     def test_login(self):
-        self.person1 = Person("DEFAULT", "DEFAULT", "DEFAULT")
-        self.assertEquals(self.person1.login("DEFAULT",))
-
-
+        self.fail()
 
     def test_logout(self):
-        self.fail()
-
-    def test_update_info(self):
-        self.fail()
-
-    def test_access_contact_info(self):
         self.fail()

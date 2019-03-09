@@ -1,17 +1,15 @@
 # created by Dillan
 
 from unittest import TestCase
-from classes import TA
+from classes.TA import TA
 
 
 class TestTA(TestCase):
-    def test__init__(self):
-        self.ta1 = TA("DEFAULT_EMAIL", "DEFAULT_USERNAME", "DEFAULT_PASSWORD")
-        self.assertEquals(self.ta1.email, "DEFAULT_EMAIL")
-        self.assertEquals(self.ta1.username, "DEFAULT_USERNAME")
-        self.assertEquals(self.ta1.password, "DEFAULT_PASSWORD")
-        self.assertEquals(self.ta1.name, "DEFAULT")
-        self.assertEquals(self.ta1.phone_number, "DEFAULT")
+    def test_view_ta_assignments(self):
+        self.fail()
 
-    def test___view_TA_assignments__(self):
+    def test_read_public_contact(self):
+        self.fail()
+
+    def test_edit_contact_info(self):
         self.fail()

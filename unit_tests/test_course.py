@@ -1,4 +1,5 @@
 from unittest import TestCase
+from classes.Course import Course
 
 
 class TestCourse(TestCase):
@@ -12,6 +13,9 @@ class TestCourse(TestCase):
         self.fail()
 
     def test_add_lab_section(self):
+        self.fail()
+
+    def test_add_tee_ay(self):
         self.fail()
 
     def test_get_course_id(self):
