@@ -1,7 +1,7 @@
 # created by Grant
 
 from unittest import TestCase
-from classes import Person
+from classes.Person import Person
 
 
 class TestPerson(TestCase):
