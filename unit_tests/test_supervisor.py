@@ -23,8 +23,12 @@ class TestSupervisor(TestCase):
         self.course2 = ("CS202", 0)
 
         # fake ta
-        self.ta_sections = []
-        self.tas = "tas@uwm.edu"
+        self.ta1_sections = []
+        self.ta1_course
+        self.ta1 = "ta1@uwm.edu"
+        self.ta2_sections = []
+        self.ta2_course
+        self.ta2 = "ta2@uwm.edu"
 
     def test_assign_instructor_course(self):
         # instructor 1 is assigned CS101
@@ -43,10 +47,26 @@ class TestSupervisor(TestCase):
         self.assertEqual(self.course1_instructor, "ins2@uwm.edu")
         self.assertNotEqual(self.ins1_courses[0], "CS101")
 
-        self.assertRaises(self.sup.assign_instructor(self.tas, self.course1[0]), TypeError)
+        self.assertRaises(self.sup.assign_instructor(self.ta1, self.course1[0]), TypeError)
 
     def test_assign_ta_course(self):
+        # TA 1 is assigned CS101
+        self.sup.assign_ta_course(self.ta1, self.course1[0])
+        self.assertEqual(self.ta1_course, "CS101")
+        self.assertEqual(self.course1_tas[0], "ta1@uwm.edu")
 
+        # assign TA 1 another course
+        self.sup.assign_ta_course(self.ta1, self.course2[0])
+        self.assertEqual(self.ta1_course, "CS202")
+        self.assertEqual(self.course2_tas[0], "ta1@uwm.edu")
+
+        # instructor 2 is assigned CS101
+        self.sup.assign_ta_course(self.ins2, self.course1[0])
+        self.assertEqual(self.ins2_courses[0], "CS101")
+        self.assertEqual(self.course1_instructor, "ins2@uwm.edu")
+        self.assertNotEqual(self.ins1_courses[0], "CS101")
+
+        self.assertRaises(self.sup.assign_instructor(self.ta1, self.course1[0]), TypeError)
 
     def test_assign_ta_lab(self):
 
