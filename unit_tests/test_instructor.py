@@ -19,15 +19,6 @@ class TestInstructor(TestCase):
         self.assertEquals(self.instructor1.name, "DEFAULT")
         self.assertEquals(self.instructor1.phone_number, "DEFAULT")
 
-    def test_login(self):
-        # still using instructor1
-        self.assertEquals(self.instructor1.login("DEFAULT_EMAIL", "DEFAULT_PASSWORD"),
-                          "Logged in successfully")
-
-    def test_logout(self):
-        # still using instructor1
-        self.assertEquals(self.instructor1.logout(), "Logged out.")
-
     def test_edit_contact(self):
         # still using instructor1
         self.instructor1.edit_contact_info("name", "Bob Ross")
