@@ -9,10 +9,10 @@ class TestAdministrator(TestCase):
         self.ad1 = Administrator("ad1@uwm.edu", "ad1pass")
 
     def test_create_course(self):
-        self.assertTrue(self.ad1.create_course("CS361", 401))
-        self.course1 = ("CS337", 401)
+        self.assertTrue(self.ad1.create_course("CS361", 3))
+        self.course1 = ("CS337", 1)
         # course already exists
-        self.assertFalse(self.ad1.create_course("CS337", 401))
+        self.assertFalse(self.ad1.create_course("CS337", 2))
 
     def test_create_account(self):
         self.assertTrue(self.ad1.create_account("DustyBottoms@uwm.edu", "better_password"))
@@ -24,7 +24,8 @@ class TestAdministrator(TestCase):
 
     def test_edit_account(self):
         self.random_user = ("rando@uwm.edu", "im_random")
-        self.ad1.edit_account("random@uwm.edu", )
+        self.ad1.edit_account("random@uwm.edu", "password", "new_pass")
+        self.assertEqual(self.random_user[2], "new_pass")
 
     def test_delete_account(self):
 

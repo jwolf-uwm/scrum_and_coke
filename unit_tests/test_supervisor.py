@@ -75,7 +75,7 @@ class TestSupervisor(TestCase):
 
     def test_assign_ta_lab(self):
         # TA 1 is assigned CS101 - 801
-        self.sup.assign_ta_lab(self.ta1, 801)
+        self.sup.assign_ta_lab(self.ta1, "CS101", 801)
         self.assertEqual(self.ta1_sections[0], 801)
 
         # TA 2 is assigned CS101 - 802

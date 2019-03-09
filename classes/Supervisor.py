@@ -19,7 +19,7 @@ class Supervisor(Person):
         """
         return
 
-    def assign_ta_lab(self, email, lab_section):
+    def assign_ta_lab(self, email, course_id, lab_section):
         """
         assigns the given TA's lab
         """
