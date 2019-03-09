@@ -8,12 +8,13 @@ class TA(Person):
     def __init__(self, email, password):
         super().__init__(email, password)
         self.courses = []
+        self.section = []
 
     def view_ta_assignments(self):
         return
 
-    def read_public_contact_info(self):
+    def read_public_contact(self):
         return
 
-    def view_ta_assignments(self):
+    def edit_contact_info(self):
         return

@@ -20,16 +20,16 @@ class Administrator(Person):
         self.password = password
         self.email = email
 
-    def create_course(self, course_name):
+    def create_course(self, course_id, course_section):
         return
 
-    def create_account(self, username, password, email):
+    def create_account(self, email, password):
         return
 
-    def edit_account(self, editInfo):
+    def edit_account(self, email):
         return
 
-    def delete_account(self, username):
+    def delete_account(self, email):
         return
 
     def send_notification(self, notification):
