@@ -2,21 +2,27 @@
 
 
 class Person:
-    def __init__(self, email, username, password):
+    def __init__(self, email, password):
         self.email = email
-        self.username = username
         self.password = password
         self.phone_number = "DEFAULT"
         self.name = "DEFAULT"
 
-    def login(self, username, password):
+    def change_password(self, old, new):
+        return
+
+    def change_email(self, address):
+        return
+
+    def change_phone(self, phone):
+        return
+
+    def get_contact_info(self):
+        return
+
+    def login(self, email, password):
         return
 
     def logout(self):
         return
 
-    def update_info(self, info_type):
-        return
-
-    def access_contact_info(self, username):
-        return
