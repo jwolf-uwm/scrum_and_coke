@@ -14,6 +14,9 @@ class TestCourse(TestCase):
     def test_add_lab_section(self):
         self.fail()
 
+    def test_add_tee_ay(self):
+        self.fail()
+
     def test_get_course_id(self):
         self.fail()
 
