@@ -75,3 +75,33 @@ class AssignInstructorTests(unittest.TestCase):
         self.ui.command("login Supervisor SupervisorPassword")
         self.assertEqual(self.ui.command("assign_instructor TA.id SomeCSClass3"),
                          "Only instructors can be assigned to classes.")
+
+    def more_tests_to_sort_through_later(self):
+        self.assertEqual(self.ui.command("assign_instructor ins1@uwm.edu CS101"), "ins1@uwm.edu was assigned to CS101")
+
+        # entered arguments that don't exist
+        self.assertEqual(self.ui.command("assign_instructor ins1, 801"), "Error: invalid email address")
+        self.assertEqual(self.ui.command("assign_instructor ins1@uwm.edu CS102"), "CS102 could not be assigned since"
+                                                                                  " it does not exist")
+        self.assertEqual(self.ui.command("assign_instructor ins2@uwm.edu CS101"), "ins2@uwm.edu could not be assigned "
+                                                                                  "since it does not exist")
+
+        # test number of arguments
+        self.assertEqual(self.ui.command("assign_instructor ins1@uwm.edu"), "Error: too few arguments")
+        self.assertEqual(self.ui.command("assign_instructor"), "Error: too few arguments")
+
+        # test if class already has instructor
+        self.Ins2 = Instructor("ins2@uwm.edu", "ins2pass")
+        self.assertEqual(self.ui.command("assign_instructor ins2@uwm.edu CS101"), "CS101 already has been assigned an"
+                                                                                  " instructor")
+
+        # test against non-instructors
+        self.TA = TA("TA@uwm.edu", "TA")
+        self.SUP = Supervisor("SUP@uwm.edu", "SUP")
+        self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
+        self.assertEqual(self.ui.command("assign_instructor TA@uwm.edu CS101"), "Error: TA@uwm.edu is not an "
+                                                                                "instructor")
+        self.assertEqual(self.ui.command("assign_instructor SUP@uwm.edu CS101"), "Error: SUP@uwm.edu is not an "
+                                                                                 "instructor")
+        self.assertEqual(self.ui.command("assign_instructor ADMIN@uwm.edu CS101"), "Error: ADMIN@uwm.edu is not an "
+                                                                                   "instructor")
