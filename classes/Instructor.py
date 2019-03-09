@@ -7,7 +7,6 @@ class Instructor(Person):
 
     def __init__(self, email, password):
         super().__init__(email, password)
-        self.courses = []
 
     def assign_ta_course(self, email, course_id, course_section):
         return
