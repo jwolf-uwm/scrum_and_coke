@@ -18,38 +18,14 @@ class TestSupervisor(TestCase):
         self.assertEqual(self.Sup1.phone_number, "DEFAULT")
 
     def test_assign_instructor_course(self):
+        self.Sup1 = Supervisor("sup1@uwm.edu", "sup1pass")
         self.Ins1 = Instructor("ins1@uwm.edu", "ins1pass")
-        self.Course1 = Course("Intro to Computer Stuff", "CS101")
+        self.Course1 = Course("CS101", 401)
 
         # best case
-        self.assertEqual(self.ui.command("assign_instructor ins1@uwm.edu CS101"), "ins1@uwm.edu was assigned to CS101")
+        self.Sup1.assign_instuctor("ins1@uwm.edu", "CS101", 401)
 
-        # entered arguments that don't exist
-        self.assertEqual(self.ui.command("assign_instructor ins1, 801"), "Error: invalid email address")
-        self.assertEqual(self.ui.command("assign_instructor ins1@uwm.edu CS102"), "CS102 could not be assigned since"
-                                                                                  " it does not exist")
-        self.assertEqual(self.ui.command("assign_instructor ins2@uwm.edu CS101"), "ins2@uwm.edu could not be assigned "
-                                                                                  "since it does not exist")
 
-        # test number of arguments
-        self.assertEqual(self.ui.command("assign_instructor ins1@uwm.edu"), "Error: too few arguments")
-        self.assertEqual(self.ui.command("assign_instructor"), "Error: too few arguments")
-
-        # test if class already has instructor
-        self.Ins2 = Instructor("ins2@uwm.edu", "ins2pass")
-        self.assertEqual(self.ui.command("assign_instructor ins2@uwm.edu CS101"), "CS101 already has been assigned an"
-                                                                                  " instructor")
-
-        # test against non-instructors
-        self.TA = TA("TA@uwm.edu", "TA")
-        self.SUP = Supervisor("SUP@uwm.edu", "SUP")
-        self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
-        self.assertEqual(self.ui.command("assign_instructor TA@uwm.edu CS101"), "Error: TA@uwm.edu is not an "
-                                                                                "instructor")
-        self.assertEqual(self.ui.command("assign_instructor SUP@uwm.edu CS101"), "Error: SUP@uwm.edu is not an "
-                                                                                 "instructor")
-        self.assertEqual(self.ui.command("assign_instructor ADMIN@uwm.edu CS101"), "Error: ADMIN@uwm.edu is not an "
-                                                                                   "instructor")
 
     def test_assign_ta_course(self):
         self.TA1 = TA("TA1@uwm.edu", "TA1")
