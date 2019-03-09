@@ -25,4 +25,3 @@ class Person:
 
     def logout(self):
         return
-
