@@ -20,14 +20,9 @@ class TestAdministrator(TestCase):
         self.assertFalse(self, self.ad1.createCourse("CS337"))
 
     def test_edit_account(self):
-        self.ad1 = Administrator("admin", "testpass", "blah@uwm.edu")
-        self.ad2 = Administrator("admin2", "testpass2", "blah2@uwm.edu")
 
     def test_delete_account(self):
-        self.fail()
 
     def test_send_notification(self):
-        self.fail()
 
     def test_access_info(self):
-        self.fail()
