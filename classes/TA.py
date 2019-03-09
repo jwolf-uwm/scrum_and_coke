@@ -13,3 +13,6 @@ class TA(Person):
 
     def read_public_contact(self, class_list):
         return
+
+    def edit_contact_info(self, field, content):
+        return

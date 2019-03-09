@@ -23,3 +23,23 @@ class TestTA(TestCase):
 
     def test_read_public_contact(self):
         self.assertEqual(self.ta1.read_public_contact(self.class_list))
+
+    def test_edit_contact_info(self):
+        # still using instructor1
+        self.ta1.edit_contact_info("name", "Bob Ross")
+        self.assertNotEquals(self.ta1.name, "DEFAULT")
+        self.assertEquals(self.ta1.name, "Bob Ross")
+
+        self.ta1.edit_contact_info("phone", "4145459999")
+        self.assertNotEquals(self.ta1.phone_number, "0000000000")
+        self.assertEquals(self.ta1.phone_number, "4145459999")
+
+        self.ta1.edit_contact_info("email", "bob_ross@uwm.edu")
+        self.assertNotEquals(self.ta1.email, "instructor1@uwm.edu")
+        self.assertEquals(self.ta1.email, "bob_ross@uwm.edu")
+
+        with self.assertRaises(TypeError):
+            self.ta1.edit_contact_info(2, "Ted")
+
+        with self.assertRaises(TypeError):
+            self.ta1.edit_contact_info("name", 41.6)
