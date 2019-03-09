@@ -11,7 +11,7 @@ class TestInstructor(TestCase):
         # fake TA
         self.ta1 = ("DEFAULT_TA1_EMAIL", "DEFAULT_PASSWORD")
         # fake Course
-        self.course1 = ("DEFAULT_ID", 101)
+        self.course1 = ("DEFAULT_ID", 101, self.instructor1, [])
 
     def test___init__(self):
         self.assertEquals(self.instructor1.email, "DEFAULT_EMAIL")
@@ -44,8 +44,6 @@ class TestInstructor(TestCase):
         self.assertFalse(self.instructor1.send_notification_ta("ROAR", "Woof!"))
 
     def test_view_course(self):
-        self.assertEquals(self.instructor1.view_course_assign(), "No courses assigned.")
-        self.instructor1.courses.append(self.course1)
         self.assertEquals(self.instructor1.view_course_assign(), "DEFAULT_ID - 101")
 
     def test_view_ta_assign(self):

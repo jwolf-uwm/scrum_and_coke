@@ -1,11 +1,11 @@
 
 
 class Course:
-    def __init__(self, course_id, section_number):
+    def __init__(self, course_id):
         self.course_id = course_id
-        self.section_number = section_number
+        self.section_number = []
         self.lab_sections = []
-        self.instructor
+        self.instructor = "Dr. Default"
         self.tee_ays = []
 
     def set_course_id(self, course_id):
