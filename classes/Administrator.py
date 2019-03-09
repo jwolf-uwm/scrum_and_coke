@@ -1,6 +1,6 @@
 # created by Matt
 
-from classes import Person
+from classes.Person import Person
 
 
 class Administrator(Person):

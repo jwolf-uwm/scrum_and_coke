@@ -1,6 +1,6 @@
 # created by Evan
 
-from classes import Person
+from classes.Person import Person
 
 
 class Supervisor(Person):
