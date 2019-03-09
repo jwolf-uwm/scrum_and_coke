@@ -14,6 +14,9 @@ class Person:
     def change_email(self, address):
         return
 
+    def change_name(self, name):
+        return
+
     def change_phone(self, phone):
         return
 
