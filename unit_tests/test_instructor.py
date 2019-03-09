@@ -47,8 +47,7 @@ class TestInstructor(TestCase):
         self.assertEquals(self.instructor1.read_public_contact(), "Bob Ross, bob_ross@uwm.edu")
 
     def test_send_notification_ta(self):
-        self.assertTrue(self.instructor1.send_notification_ta("ta1@uwm.edu", "Hi!"))
-        self.assertFalse(self.instructor1.send_notification_ta("ROAR", "Woof!"))
+        self.assertTrue(self.instructor1.send_notification_ta("Hi!"))
 
     def test_view_course(self):
         self.assertEquals(self.instructor1.view_course_assign(), "Course 1")
