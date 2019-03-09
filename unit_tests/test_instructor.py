@@ -1,8 +1,6 @@
 # created by Jeff
 
 from classes.Instructor import Instructor
-from classes.TA import TA
-from classes.Course import Course
 from unittest import TestCase
 
 
