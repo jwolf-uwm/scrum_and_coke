@@ -5,20 +5,28 @@ from classes.Person import Person
 
 
 class TestPerson(TestCase):
+
+    def setup(self):
+        self.person1 = Person("person1@uwm.edu", "DEFAULT_PASSWORD")
+        self.person2 = Person("person2@uwm.edu", "DEFAULT_PASSWORD")
+
     def test_init_(self):
-        self.person1 = Person("DEFAULT_EMAIL", "DEFAULT_PASSWORD")
-        self.assertEquals(self.person1.email, "DEFAULT_EMAIL")
+        self.assertEquals(self.person1.email, "person1@uwm.edu")
         self.assertEquals(self.person1.password, "DEFAULT_PASSWORD")
         self.assertEquals(self.person1.name, "DEFAULT")
         self.assertEquals(self.person1.phone_number, "0000000000")
 
     def test_change_password(self):
-        self.person1.change_password("DEFAULT_PASSWORD", "password")
+        self.assertEquals(self.person1.password, "DEFAULT_PASSWORD")
+        self.assertTrue(self.person1.change_password("DEFAULT_PASSWORD", "password"))
         self.assertEquals(self.person1.password, "password")
+        self.assertNotEquals(self.person1.password, "DEFAULT_PASSWORD")
+        self.assertFalse(self.person1.change_password("DEFAULT_PASSWORD", "some_password"))
 
     def test_change_email(self):
         self.person1.change_email("snoop@uwm.edu")
         self.assertEquals(self.person1.email, "snoop@uwm.edu")
+        self.assertNotEquals(self.person1.email, "person1@uwm.edu")
 
     def test_change_phone(self):
         self.person1.change_phone(4144244343)
