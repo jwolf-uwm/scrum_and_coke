@@ -24,7 +24,7 @@ class Instructor(Person):
     def view_ta_assign(self):
         return
 
-    def edit_contact_info(self):
+    def edit_contact_info(self, field, content):
         return
 
     def send_notification_ta(self, ta_email, content):
