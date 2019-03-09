@@ -10,8 +10,10 @@ class TestInstructor(TestCase):
 
     def setup(self):
         self.instructor1 = Instructor("DEFAULT_EMAIL", "DEFAULT_PASSWORD")
-        self.ta1 = TA("DEFAULT_TA1_EMAIL", "DEFAULT_PASSWORD")
-        self.course1 = Course("DEFAULT_ID", 101)
+        # fake TA
+        self.ta1 = ("DEFAULT_TA1_EMAIL", "DEFAULT_PASSWORD")
+        # fake Course
+        self.course1 = ("DEFAULT_ID", 101)
 
     def test___init__(self):
         self.assertEquals(self.instructor1.email, "DEFAULT_EMAIL")
