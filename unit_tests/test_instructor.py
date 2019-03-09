@@ -8,10 +8,13 @@ class TestInstructor(TestCase):
 
     def setup(self):
         self.instructor1 = Instructor("instructor1@uwm.edu", "DEFAULT_PASSWORD")
+        self.instructor2 = Instructor("instructor2@uwm.edu", "DEFAULT_PASSWORD")
         # fake TA
         self.ta1 = ("ta1@uwm.edu", "DEFAULT_PASSWORD")
+        self.ta2 = ("ta2@uwm.edu", "DEFAULT_PASSWORD")
         # fake Course
-        self.course1 = ("DEFAULT_ID", 101, self.instructor1, [])
+        self.course1 = ("Course 1", 2, self.instructor1, [self.ta1])
+        self.course2 = ("Course 2", 2, self.instructor2, [self.ta2])
 
     def test___init__(self):
         self.assertEquals(self.instructor1.email, "DEFAULT_EMAIL")
@@ -40,16 +43,17 @@ class TestInstructor(TestCase):
             self.instructor1.edit_contact_info("name", 41.6)
 
     def test_read_public_contact(self):
-        self.assertNotEquals(self.instructor1.read_public_contact())
+        self.assertNotEquals(self.instructor1.read_public_contact(), "DEFAULT, instructor1@uwm1.edu")
         self.assertEquals(self.instructor1.read_public_contact(), "Bob Ross, bob_ross@uwm.edu")
 
-
     def test_send_notification_ta(self):
-        self.assertTrue(self.instructor1.send_notification_ta("DEFAULT_TA_EMAIL", "Hi!"))
+        self.assertTrue(self.instructor1.send_notification_ta("ta1@uwm.edu", "Hi!"))
         self.assertFalse(self.instructor1.send_notification_ta("ROAR", "Woof!"))
 
     def test_view_course(self):
-        self.assertEquals(self.instructor1.view_course_assign(), "DEFAULT_ID - 101")
+        self.assertEquals(self.instructor1.view_course_assign(), "Course 1")
+        self.assertNotEquals(self.instructor1.view_course_assign(), "Course 2")
 
     def test_view_ta_assign(self):
         self.assertEquals(self.instructor1.view_ta_assign()[0], self.ta1)
+        self.assertNotEquals(self.instructor1.view_ta_assign(), self.ta2)
