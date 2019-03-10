@@ -28,8 +28,10 @@ class TestAdministrator(TestCase):
         self.assertEqual(self.random_user[2], "new_pass")
 
     def test_delete_account(self):
+        self.fail()
 
     def test_send_notification(self):
         self.assertTrue(self.ad1.send_notification("I Like To Eat French Fries In The Rain"))
 
     def test_access_info(self):
+        self.fail()
