@@ -10,6 +10,7 @@ class TestCourse(TestCase):
         course3 = Course()
 
     def test__init__(self):
+        self.fail()
 
     def test_set_course_id(self):
         self.fail()
