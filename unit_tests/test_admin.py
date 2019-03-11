@@ -57,4 +57,9 @@ class TestAdministrator(TestCase):
         self.assertTrue(self.ad1.send_notification("I Like To Eat French Fries In The Rain"))
 
     def test_access_info(self):
-        self.fail()
+        # creating stuff in the system
+        self.user = ("email@uwm.edu", "pass")
+        self.system_stuff = ([self.ad1, self.ad2, self.user],
+                            ["ad1@uwm.edu", "ad2@uwm.edu", "email@uwm.edu"],
+                            ["ad1pass", "ad2pass", "pass"])
+        self.assertTrue(self.ad1.access_info(), self.system_stuff)
