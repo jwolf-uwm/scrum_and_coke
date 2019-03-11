@@ -41,9 +41,17 @@ class TestAdministrator(TestCase):
         self.ad1.edit_account("rando@uwm.edu", "name", "Howard Stern")
         self.assertEqual(self.random_user[4], "Howard Stern")
 
+        self.assertFalse(self.ad1.edit_account("rando@uwm.edu", "password"))
+        self.assertFalse(self.ad1.edit_account("rando@uwm.edu"))
+        self.assertFalse(self.ad1.edit_account("wrong_email@uwm.edu", "password", "new_pass"))
+        self.assertFalse(self.ad1.edit_account("rando@uwm.edu", "wrong_field", "new_pass"))
+        self.assertFalse(self.ad1.edit_account("rando@uwm.edu", "password", ";\"π  /\\# bad `  pass ' chars"))
 
     def test_delete_account(self):
-        self.fail()
+        self.deleted_user = ("delete_me@uwm.edu", "delete_me_pass")
+        self.ad1.delete_account("delete_me@uwm.edu")
+        self.copy_user = ("delete_me@uwm.edu", "delete_me_pass")
+        self.assertNotEqual(self.copy_user, self.deleted_user)
 
     def test_send_notification(self):
         self.assertTrue(self.ad1.send_notification("I Like To Eat French Fries In The Rain"))
