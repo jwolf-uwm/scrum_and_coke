@@ -23,9 +23,24 @@ class TestAdministrator(TestCase):
         self.assertFalse(self.ad1.create_account("George_Likes_Beef@uwm.edu", "better_password"))
 
     def test_edit_account(self):
-        self.random_user = ("rando@uwm.edu", "im_random")
-        self.ad1.edit_account("random@uwm.edu", "password", "new_pass")
+        self.random_user = ("rando@uwm.edu", "im_random", 1234567, "Jerry Seinfeld")
+
+        # test edit password
+        self.ad1.edit_account("rando@uwm.edu", "password", "new_pass")
         self.assertEqual(self.random_user[2], "new_pass")
+
+        # test edit email
+        self.ad1.edit_account("rando@uwm.edu", "email", "NEW_EMAIL@uwm.edu")
+        self.assertEqual(self.random_user[1], "NEW_EMAIL@uwm.edu")
+
+        # test edit phone
+        self.ad1.edit_account("rando@uwm.edu", "phone", 3456789)
+        self.assertEqual(self.random_user[3], 3456789)
+
+        # test edit name
+        self.ad1.edit_account("rando@uwm.edu", "name", "Howard Stern")
+        self.assertEqual(self.random_user[4], "Howard Stern")
+
 
     def test_delete_account(self):
         self.fail()
