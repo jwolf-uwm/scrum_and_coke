@@ -1,9 +1,9 @@
 
 
 class Course:
-    def __init__(self, course_id, lab_sections):
+    def __init__(self, course_id, num_labs):
         self.course_id = course_id
-        self.lab_sections = lab_sections
+        self.num_labs = num_labs
         # instructor should be a class at some point
         self.instructor = "Dr. Default"
         self.tee_ays = []
@@ -17,7 +17,7 @@ class Course:
     def set_instructor(self, instructor):
         return
 
-    def add_lab_section(self, lab_section):
+    def set_num_labs(self, lab_section):
         return
 
     def add_tee_ay(self, tee_ay):
@@ -32,7 +32,7 @@ class Course:
     def get_course_section(self):
         return
 
-    def get_lab_sections(self):
+    def get_num_labs(self):
         return
 
     def get_tee_ays(self):
