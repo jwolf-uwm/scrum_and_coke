@@ -62,4 +62,4 @@ class TestAdministrator(TestCase):
         self.system_stuff = ([self.ad1, self.ad2, self.user],
                             ["ad1@uwm.edu", "ad2@uwm.edu", "email@uwm.edu"],
                             ["ad1pass", "ad2pass", "pass"])
-        self.assertTrue(self.ad1.access_info(), self.system_stuff)
+        self.assertEqual(self.ad1.access_info(), self.system_stuff)
