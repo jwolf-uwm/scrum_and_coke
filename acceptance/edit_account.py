@@ -1,5 +1,9 @@
-#made by Matt
 import unittest
+from classes.Administrator import Administrator
+from classes.Supervisor import Supervisor
+from classes.Instructor import Instructor
+from classes.TA import TA
+
 
 class EditAccountTests(unittest.TestCase):
     def setUp(self):
