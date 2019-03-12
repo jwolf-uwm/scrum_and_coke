@@ -46,4 +46,3 @@ class LoginTests(unittest.TestCase)
     def test_invalid_login_Admin(self):
         self.assertEqual(self.ui.command("Login Supervisor1 AdminPaword "), "Password invalid")
         self.assertEqual(self.ui.command("Login Supervisor2 SupervisorPassowrd"), "No such user")
-
