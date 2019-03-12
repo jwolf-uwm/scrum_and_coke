@@ -4,10 +4,10 @@ import unittest
 
 class LoginTests(unittest.TestCase)
     def setUp(self):
-        self.ui.command("create_user Admin1 AdminPassword")
-        self.ui.command("create_user Supervisor1 SupervisorPassword")
-        self.ui.command("create_user TA1 TAPassword")
-        self.ui.command("create_user Instructor1 InstructorPassword")
+        self.SUP = Supervisor("SUP@uwm.edu", "SUP")
+        self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
+        self.INS = Instructor("INS@uwm.edu", "INS")
+        self.TA = TA("TA@uwm.edu", "TA")
     """
     When a user wants to login two arguments are required
         -Username
@@ -21,29 +21,29 @@ class LoginTests(unittest.TestCase)
         -"no such user" displayed
     """
     def test_valid_login_Admin(self):
-        self.assertEqual(self.ui.command("Login Admin1 AdminPassword "), "login successful")
+        self.assertEqual(self.ui.command("Login ADMN@uwm.edu ADMN "), "login successful")
 
     def test_invalid_login_Admin(self):
-        self.assertEqual(self.ui.command("Login Admin1 AdminPaword "), "Password invalid")
-        self.assertEqual(self.ui.command("Login Admin2 AdminPassword"), "No such user")
+        self.assertEqual(self.ui.command("Login ADMN@uwm.edu AdminPaword "), "Password invalid")
+        self.assertEqual(self.ui.command("Login ADMN3@uwm.edu AdminPassword"), "No such user")
 
     def test_valid_login_TA(self):
-        self.assertEqual(self.ui.command("Login TA1 TAPassword "), "login successful")
+        self.assertEqual(self.ui.command("Login TA@uwm.edu TA "), "login successful")
 
     def test_invalid_login_TA(self):
-        self.assertEqual(self.ui.command("Login TA1 AdminPaword "), "Password invalid")
-        self.assertEqual(self.ui.command("Login TA2 TAPassword"), "No such user")
+        self.assertEqual(self.ui.command("Login TA@uwm.edu AdminPaword "), "Password invalid")
+        self.assertEqual(self.ui.command("Login TA2@uwm.edu TAPassword"), "No such user")
 
     def test_valid_login_Instructor(self):
-        self.assertEqual(self.ui.command("Login Instructor1 InstructorPassword "), "login successful")
+        self.assertEqual(self.ui.command("Login INS@uwm.edu INS "), "login successful")
 
     def test_invalid_login_Instructor(self):
-        self.assertEqual(self.ui.command("Login Instructor1 AdminPaword "), "Password invalid")
-        self.assertEqual(self.ui.command("Login Instructor2 InstructorPassword"), "No such user")
+        self.assertEqual(self.ui.command("Login INS@uwm.edu AdminPaword "), "Password invalid")
+        self.assertEqual(self.ui.command("Login INS2@uwm.edu InstructorPassword"), "No such user")
 
     def test_valid_login_Supervisor(self):
-        self.assertEqual(self.ui.command("Login Supervisor1 SupervisorPassword "), "login successful")
+        self.assertEqual(self.ui.command("Login SUP@uwm.edu SUP "), "login successful")
 
     def test_invalid_login_Admin(self):
-        self.assertEqual(self.ui.command("Login Supervisor1 AdminPaword "), "Password invalid")
-        self.assertEqual(self.ui.command("Login Supervisor2 SupervisorPassword"), "No such user")
+        self.assertEqual(self.ui.command("Login SUP@uwm.edu AdminPaword "), "Password invalid")
+        self.assertEqual(self.ui.command("Login SUP2@uwm.edu SupervisorPassword"), "No such user")

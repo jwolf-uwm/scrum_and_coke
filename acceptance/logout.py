@@ -4,10 +4,10 @@ import unittest
 
 class LoginTests(unittest.TestCase)
     def setUp(self):
-        self.ui.command("create_user Admin AdminPassword")
-        self.ui.command("create_user Supervisor SupervisorPassword")
-        self.ui.command("create_user TA TAPassword")
-        self.ui.command("create_user Instructor InstructorPassword")
+        self.SUP = Supervisor("SUP@uwm.edu", "SUP")
+        self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
+        self.INS = Instructor("INS@uwm.edu", "INS")
+        self.TA = TA("TA@uwm.edu", "TA")
     """
     When a user wants to logout no arguments are required 
     if logout works properly
@@ -17,19 +17,19 @@ class LoginTests(unittest.TestCase)
     """
 
     def test_logout_Admin(self):
-        self.ui.command("login Admin AdminPassword")
+        self.ui.command("login ADMN@uwm.edu ADMIN")
         self.assertEqual(self.ui.command("logout"), "logout successful")
 
     def test_logout_TA(self):
-        self.ui.command("login TA TAPassword")
+        self.ui.command("login TA@uwm.edu TA")
         self.assertEqual(self.ui.command("logout"), "logout successful")
 
     def test_logout_Instructor(self):
-        self.ui.command("login Instructor InstructorPassword")
+        self.ui.command("login INS@uwm.edu INS")
         self.assertEqual(self.ui.command("logout"), "logout successful")
 
     def test_logout_Supervisor(self):
-        self.ui.command("login Supervisor SupervisorPassword")
+        self.ui.command("login SUP@uwm.edu SUP")
         self.assertEqual(self.ui.command("logout"), "logout successful")
 
     def test_invalid_logout(self):
