@@ -2,7 +2,7 @@
 
 import unittest
 
-class LoginTests(unittest.TestCase)
+class LoginTests(unittest.TestCase):
     def setUp(self):
         self.SUP = Supervisor("SUP@uwm.edu", "SUP")
         self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
