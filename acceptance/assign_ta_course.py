@@ -1,12 +1,16 @@
 import unittest
+from classes.TA import TA
+from classes.Instructor import Instructor
+from classes.Supervisor import Supervisor
+from classes.Course import Course
 
 
 class AssignTACourse(unittest.TestCase):
         def setUp(self):
-                self.TA1 = ("TA1@uwm.edu", "TA1")
-                self.Course1 = ("Intro to Computer Stuff", "CS101", 801)
-                self.assertEqual(self.ui.command("assign_ta_course TA1@uwm.edu CS101"),
-                                 "TA1@uwm.edu was assigned to CS101")
+            self.TA = TA("ta@uwm.edu", "taPass")
+            self.INS = Instructor("ins@uwm.edu", "insPass")
+            self.SUP = Supervisor("sup@uwm.edu", "supPass")
+            self.COURSE = Course("CS351", 3)
 
         def assign_ta_Course(self):
                 # best case
