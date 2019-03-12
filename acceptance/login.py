@@ -47,3 +47,7 @@ class LoginTests(unittest.TestCase):
     def test_invalid_login_Admin(self):
         self.assertEqual(self.ui.command("Login SUP@uwm.edu AdminPaword "), "Password invalid")
         self.assertEqual(self.ui.command("Login SUP2@uwm.edu SupervisorPassword"), "No such user")
+
+    def test_invalid_number_args(self):
+        self.assertEqual(self.ui.command("Login AdminPaword "), "invalid number of arguments")
+        self.assertEqual(self.ui.command("Login SUP@uwm.edu "), "invalid number of arguments")
