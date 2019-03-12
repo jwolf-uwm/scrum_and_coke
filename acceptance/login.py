@@ -1,4 +1,5 @@
 #made by matt
+
 import unittest
 
 class LoginTests(unittest.TestCase)
@@ -38,11 +39,11 @@ class LoginTests(unittest.TestCase)
 
     def test_invalid_login_Instructor(self):
         self.assertEqual(self.ui.command("Login Instructor1 AdminPaword "), "Password invalid")
-        self.assertEqual(self.ui.command("Login Instructor2 InstructorPassowrd"), "No such user")
+        self.assertEqual(self.ui.command("Login Instructor2 InstructorPassword"), "No such user")
 
     def test_valid_login_Supervisor(self):
         self.assertEqual(self.ui.command("Login Supervisor1 SupervisorPassword "), "login successful")
 
     def test_invalid_login_Admin(self):
         self.assertEqual(self.ui.command("Login Supervisor1 AdminPaword "), "Password invalid")
-        self.assertEqual(self.ui.command("Login Supervisor2 SupervisorPassowrd"), "No such user")
+        self.assertEqual(self.ui.command("Login Supervisor2 SupervisorPassword"), "No such user")
