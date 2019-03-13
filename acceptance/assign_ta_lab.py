@@ -10,15 +10,18 @@ class AssignTALab(TestCase):
         def setUp(self):
                 self.TA1 = TA("TA1@uwm.edu", "TA1")
                 self.Course1 = Course("CS101", 1)
-
-        def test_assign_ta_lab(self):
-                # best case
+                self.Course1.set_lab(1, 801)
                 self.assertEqual(self.ui.command("assign_ta_course TA1@uwm.edu CS101"),
                                  "TA1@uwm.edu was assigned to CS101")
 
+        def test_assign_ta_lab(self):
+                # best case
+                self.assertEqual(self.ui.command("assign_ta_lab TA1@uwm.edu 801"),
+                                 "TA1@uwm.edu was assigned to lab 801")
+
         def test_assign_ta_lab_args_dne(self):
                 # entered arguments that don't exist
-                self.assertEqual(self.ui.command("assign_ta_lab TA1, CS101"), "Error: invalid email address")
+                self.assertEqual(self.ui.command("assign_ta_lab TA1, 801"), "Error: invalid email address")
                 self.assertEqual(self.ui.command("assign_ta_lab TA2@uwm.edu, 801"),
                                  "TA2@uwm.edu could not be assigned since it does not exist")
                 self.assertEqual(self.ui.command("assign_ta_lab TA1@uwm.edu, 802"),
