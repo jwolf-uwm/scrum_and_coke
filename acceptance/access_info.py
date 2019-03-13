@@ -1,5 +1,4 @@
 import unittest
-# from classes import classes.Person
 from classes.Administrator import Administrator
 from classes.Supervisor import Supervisor
 from classes.Instructor import Instructor
