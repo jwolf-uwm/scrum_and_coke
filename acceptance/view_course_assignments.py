@@ -1,13 +1,20 @@
-#made by matt
+from unittest import TestCase
+from classes.Supervisor import Supervisor
+from classes.Administrator import Administrator
+from classes.Instructor import Instructor
+from classes.TA import TA
+from classes.Course import Course
 
-import unittest
 
-class ViewCourseAssignmentsTest(unittest.TestCase):
+class ViewCourseAssignmentsTest(TestCase):
     def setUp(self):
         self.SUP = Supervisor("SUP@uwm.edu", "SUP")
         self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
         self.INS = Instructor("INS@uwm.edu", "INS")
         self.TA = TA("TA@uwm.edu", "TA")
+        self.Course1 = Course("CS351", 3)
+        self.Course2 = Course("CS431", 2)
+        self.Course3 = Course("CS361", 3)
 
     """
     an instructor has the ability to view what courses they are assigned to 
@@ -35,6 +42,7 @@ class ViewCourseAssignmentsTest(unittest.TestCase):
     def test_valid_ins(self):
         self.ui.command("login INS@uwm.edu INS")
         self.assertEqual(self.ui.command("view_course_assignments"), "no courses assigned")
+        self.ui.command("logout")
         self.ui.command("login ADMN@uwm.edu ADMIN")
         self.ui.command("create_course INS@uwm.edu CS361 3")
         self.ui.command("logout")
