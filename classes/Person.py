@@ -5,7 +5,7 @@ class Person:
     def __init__(self, email, password):
         self.email = email
         self.password = password
-        self.phone_number = "DEFAULT"
+        self.phone_number = -1
         self.name = "DEFAULT"
 
     def change_password(self, old, new):
