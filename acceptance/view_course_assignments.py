@@ -1,4 +1,3 @@
-#made by matt
 
 import unittest
 from classes import Person
