@@ -1,6 +1,6 @@
 # created by Dillan
 
-from classes import Person
+from classes.Person import Person
 
 
 class TA(Person):
