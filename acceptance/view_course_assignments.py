@@ -1,6 +1,13 @@
 #made by matt
 
 import unittest
+from classes import Person
+from classes import Administrator
+from classes import Instructor
+from classes import TA
+from classes import Supervisor
+from classes import Course
+
 
 class ViewCourseAssignmentsTest(unittest.TestCase):
     def setUp(self):
@@ -8,6 +15,9 @@ class ViewCourseAssignmentsTest(unittest.TestCase):
         self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
         self.INS = Instructor("INS@uwm.edu", "INS")
         self.TA = TA("TA@uwm.edu", "TA")
+        self.Course1 = Course("CS351", 3)
+        self.Course2 = Course("CS431", 2)
+        self.Course3 = Course("CS361", 3)
 
     """
     an instructor has the ability to view what courses they are assigned to 
@@ -35,6 +45,7 @@ class ViewCourseAssignmentsTest(unittest.TestCase):
     def test_valid_ins(self):
         self.ui.command("login INS@uwm.edu INS")
         self.assertEqual(self.ui.command("view_course_assignments"), "no courses assigned")
+        self.ui.command("logout")
         self.ui.command("login ADMN@uwm.edu ADMIN")
         self.ui.command("create_course INS@uwm.edu CS361 3")
         self.ui.command("logout")
