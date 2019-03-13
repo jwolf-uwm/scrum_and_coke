@@ -1,14 +1,12 @@
-#blah
-import unittest
-from classes import Person
-from classes import Administrator
-from classes import Instructor
-from classes import TA
-from classes import Supervisor
-from classes import Course
+from unittest import TestCase
+from classes.Supervisor import Supervisor
+from classes.Administrator import Administrator
+from classes.Instructor import Instructor
+from classes.TA import TA
+from classes.Course import Course
 
 
-class ViewCourseAssignmentsTest(unittest.TestCase):
+class ViewCourseAssignmentsTest(TestCase):
     def setUp(self):
         self.SUP = Supervisor("SUP@uwm.edu", "SUP")
         self.ADMIN = Administrator("ADMN@uwm.edu", "ADMIN")
