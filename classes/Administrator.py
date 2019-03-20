@@ -3,6 +3,8 @@
 from classes.Person import Person
 from classes.Instructor import Instructor
 from classes.TA import TA
+from classes.Course import Course
+from classes.Database import Database
 
 
 class Administrator(Person):
@@ -23,6 +25,10 @@ class Administrator(Person):
         self.email = email
 
     def create_course(self, course_id, num_labs):
+        new_course = Course(course_id, num_labs)
+        if Database.courses.contains(course_id):
+            return "Course already exists"
+        Database.courses.append(new_course)
         return
 
     def create_account(self, email, password, account_type):
