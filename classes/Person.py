@@ -7,6 +7,7 @@ class Person:
         self.password = password
         self.phone_number = -1
         self.name = "DEFAULT"
+        self.isLoggedIn = False
 
     def change_password(self, old, new):
         return
@@ -24,7 +25,17 @@ class Person:
         return
 
     def login(self, email, password):
-        return
+
+        if self.email != email | self.password != password:
+            return "Invalid login info."
+        if self.isLoggedIn is True:
+            return "User already logged in"
+        self.isLoggedIn = True
+        return "Login successful."
 
     def logout(self):
-        return
+
+        if self.isLoggedIn is False:
+            return False
+        self.isLoggedIn = False
+        return True
