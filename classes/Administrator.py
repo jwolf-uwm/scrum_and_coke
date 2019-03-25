@@ -21,8 +21,7 @@ class Administrator(Person):
     must be able to access information
     """
     def __init__(self, email, password):
-        self.password = password
-        self.email = email
+        super().__init__(email, password)
 
     def create_course(self, course_id, num_labs):
         new_course = Course(course_id, num_labs)
