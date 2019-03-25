@@ -12,10 +12,10 @@ class TestAdministrator(TestCase):
         self.data = Database()
 
     def test_create_course(self):
-        self.assertEqual(self.ad1.create_course("CS361", 3), )
-        self.course1 = Course("CS337", 1)
+        self.assertEqual(self.ad1.create_course("CS361", 3), Course("CS361", 3))
+        self.data.courses.append(self, Course("CS337", 1))
         # course already exists
-        self.assertFalse(self.ad1.create_course("CS337", 2))
+        self.assertEqual(self.ad1.create_course("CS337", 2), "Course already exists")
 
     def test_create_account(self):
         self.assertTrue(self.ad1.create_account("DustyBottoms@uwm.edu", "better_password"))
