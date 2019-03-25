@@ -1,16 +1,19 @@
 # created by Matt
 
 from classes.Administrator import Administrator
+from classes.Course import Course
+from classes.Database import Database
 from unittest import TestCase
 
 
 class TestAdministrator(TestCase):
     def setUp(self):
         self.ad1 = Administrator("ad1@uwm.edu", "ad1pass")
+        self.data = Database()
 
     def test_create_course(self):
-        self.assertTrue(self.ad1.create_course("CS361", 3))
-        self.course1 = ("CS337", 1)
+        self.assertEqual(self.ad1.create_course("CS361", 3), )
+        self.course1 = Course("CS337", 1)
         # course already exists
         self.assertFalse(self.ad1.create_course("CS337", 2))
 

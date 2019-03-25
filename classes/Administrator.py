@@ -28,7 +28,7 @@ class Administrator(Person):
         if Database.courses.contains(new_course):
             return "Course already exists"
         Database.courses.append(new_course)
-        return
+        return new_course
 
     def create_account(self, email, password, account_type):
 
