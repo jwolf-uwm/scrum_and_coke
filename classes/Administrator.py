@@ -25,7 +25,7 @@ class Administrator(Person):
 
     def create_course(self, course_id, num_labs):
         new_course = Course(course_id, num_labs)
-        if Database.courses.contains(course_id):
+        if Database.courses.contains(new_course):
             return "Course already exists"
         Database.courses.append(new_course)
         return
