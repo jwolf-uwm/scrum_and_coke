@@ -25,10 +25,10 @@ class Administrator(Person):
 
     def create_course(self, course_id, num_labs):
         new_course = Course(course_id, num_labs)
-        if Database.courses.contains(new_course):
+        if Database.courses.contains(course_id):
             return "Course already exists"
-        Database.courses.append(new_course)
-        return
+        Database.courses.append(course_id)
+        return new_course
 
     def create_account(self, email, password, account_type):
 
